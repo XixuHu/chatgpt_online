@@ -11,7 +11,7 @@ import { ref } from "vue";
 import { Cloud } from "laf-client-sdk";
 
 const cloud = new Cloud({
-  baseUrl: "https://a3uvbk.laf.dev",
+  baseUrl: "https://<APPID>.laf.dev",
   getAccessToken: () => "",
 });
 
