@@ -5,8 +5,8 @@ import { Cloud } from "laf-client-sdk";
 import { marked } from "marked";
 
 const cloud = new Cloud({
-  baseUrl: "https://<APPID>.laf.dev",
-  getAccessToken: () => "",
+  baseUrl: "https://j7zj45.laf.dev",
+  getAccessToken: () => localStorage.getItem("access_token"),
 });
 
 const list = ref([]);

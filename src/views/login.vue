@@ -1,7 +1,6 @@
 <template>
   <div class="box">
     <input class="input" v-model="answer" placeholder="输入你的口令" />
-    <!-- 写一个按钮 -->
     <button class="button" @click="send">发送</button>
   </div>
 </template>
@@ -9,12 +8,14 @@
 <script setup>
 import { ref } from "vue";
 import { Cloud } from "laf-client-sdk";
+import { useRoute, useRouter } from "vue-router";
 
 const cloud = new Cloud({
-  baseUrl: "https://<APPID>.laf.dev",
+  baseUrl: "https://j7zj45.laf.dev",
   getAccessToken: () => "",
 });
 
+const router = useRouter();
 const answer = ref("");
 
 async function send() {
@@ -27,7 +28,10 @@ async function send() {
     const res = await cloud.invoke("get", { message });
 
     if (res.ok) {
-      window.location.href = "/home";
+      localStorage.setItem("access_token", res.access_token);
+      router.push({
+        path: "/home",
+      });
     }
   } catch (error) {
     console.log(error);
