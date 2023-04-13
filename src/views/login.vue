@@ -9,6 +9,7 @@
 import { ref } from "vue";
 import { Cloud } from "laf-client-sdk";
 import { useRoute, useRouter } from "vue-router";
+import { ElMessage } from "element-plus";
 
 const cloud = new Cloud({
   baseUrl: "https://j7zj45.laf.dev",
@@ -28,6 +29,10 @@ async function send() {
     const res = await cloud.invoke("get", { message });
 
     if (res.ok) {
+      ElMessage({
+        message: "这只小猫最可爱！",
+        type: "success",
+      });
       localStorage.setItem("access_token", res.access_token);
       router.push({
         path: "/home",
