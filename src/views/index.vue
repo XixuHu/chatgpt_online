@@ -7,6 +7,7 @@ import { marked } from "marked";
 const cloud = new Cloud({
   baseUrl: "https://j7zj45.laf.dev",
   getAccessToken: () => localStorage.getItem("access_token"),
+  timeout:10000,
 });
 
 const list = ref([]);
@@ -19,7 +20,7 @@ async function send() {
 
   list.value.push({
     text: question.value,
-    avatar: "/avatar.png",
+    avatar: "/avatar2.jpg",
   });
 
   setScreen();
@@ -81,7 +82,7 @@ function setScreen() {
 <template>
   <div class="page">
     <div class="begintitle">
-      <h1 v-show="!list.length" @click="send">左风的ChatGPT</h1>
+      <h1 v-show="!list.length" @click="send">小猫咪的ChatGPT</h1>
     </div>
 
     <div id="myList">
